@@ -84,6 +84,48 @@ public class Sorting {
 		return ret;
 	}
 	
+	public Integer[] mergeSort(Integer[] arr, int lo, int high)
+	{
+		if(lo >= high)
+		{
+			return arr;
+		}
+		int mid = lo + (high - lo)/2;
+		arr = mergeSort(arr, lo, mid);
+		arr = mergeSort(arr, mid+1, high);
+		
+		return merge(arr, lo, mid, high);
+		
+	}
+	
+	
+	public Integer[] merge(Integer[] arr, int lo, int mid, int high)
+	{
+		Sorting jeff = new Sorting();
+		Integer[] ret = new Integer[arr.length];
+		for(int a = 0; a <= high; a++)
+		{
+			ret[a] = arr[a];
+		}
+		int i = lo;
+		int j = mid + 1;
+				
+		for(int k =lo; k <= high; k++)
+		{
+			//jeff.printArrs(arr);
+			//System.out.println("k:" + k +" i:" + i + " j:" + j + " mid:" + mid + " lo:" + lo + " high:" + high);
+			if(i > mid)
+				arr[k] = ret[j++];
+			else if(j > high)
+				arr[k] = ret[i++];
+			else if (ret[i] > ret[j])
+				arr[k] = ret[j++];
+			else
+				arr[k] = ret[i++];
+		}
+		return arr;
+	}
+	
 	public Integer[] merge(Integer[] left, Integer[] right)
 	{
 		Integer[] ret = new Integer[left.length + right.length];
@@ -195,16 +237,22 @@ public class Sorting {
 		// TODO Auto-generated method stub
 		Sorting a = new Sorting();
 		Integer[] arr = {1000,2,1,2,3,1,1000,5,5,6,7,1337,9,10};
-		Integer[] A = {5,7,12,19};
+		Integer[] A = {5,7,12,19,4,6,13,15};
+		Integer[] BP = {5,19,7,12,4,13,6,15};
+		
 		Integer[] B = {4,6,13,15};
 		
-		Integer[] me = a.merge(A,B);
+		Integer[] me = a.mergeSort(A, 0, 7);
+		//Integer[] me2 = a.merge(BP, 0, 1, 3);
+		//Integer[] me3 = a.merge(BP, 4, 5, 7);
 		
 		//Integer[] selSort = a.selectionSort(arr);
 		//Integer[] insertSort = a.insertionSort(arr);
 		//Integer[] foo = a.removeIndexFromArray(arr, 1000);	
 		
 		a.printArrs(me);
+		//a.printArrs(me2);
+		//a.printArrs(me3);
 		//a.printArrs(foo);
 		//a.printArrs(selSort);
 		//a.printArrs(insertSort);
