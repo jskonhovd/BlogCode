@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-
+import java.util.Random;
 
 public class Sorting {
 
@@ -232,7 +232,12 @@ public class Sorting {
 		}
 		System.out.println(ret.substring(0, ret.length()-1));
 	}
-	
+	public Integer[] Partition(Integer[] arr, int lo, int high)
+  {
+    int pivot = 
+    swap(arr, 
+
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Sorting a = new Sorting();
