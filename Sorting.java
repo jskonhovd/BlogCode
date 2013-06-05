@@ -237,14 +237,14 @@ public class Sorting {
 	public Integer[] Partition(Integer[] arr, int lo, int high)
   {
     Random gen = new Random();
-    int pivot = gen.nextInt(high-lo-1);
+    int pivot = arr[gen.nextInt(high-lo-1)];
     int leftWall = lo;
-    System.out.println("Pivot:" + pivot);
-    for(int i = lo; i < high; i++)
+    System.out.println("Pivot:" + pivot + " -hi:" + high + " -Lo:"  + lo );
+    for(int i = lo; i < high-1; i++)
     {
       if(arr[i] < pivot)
       {
-        System.out.println("Index:" + i + " -- " + "LeftWall: " + leftWall ); 
+        System.out.println("Index:" + i + " -- " + "LeftWall: " + leftWall + " Hi:" + high + " Lo:" + lo ); 
         leftWall++;
         swap(arr, i, leftWall);
       }
@@ -265,7 +265,7 @@ public class Sorting {
 		
 		Integer[] B = {4,6,13,15};
 		
-    Integer[] make = a.Partition(A, 0, arr.length);
+    Integer[] make = a.Partition(A, 0, A.length - 1);
 	//	Integer[] me = a.mergeSort(A, 0, 7);
 		//Integer[] me2 = a.merge(BP, 0, 1, 3);
 		//Integer[] me3 = a.merge(BP, 4, 5, 7);
