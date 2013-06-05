@@ -183,6 +183,7 @@ public class Sorting {
 	
 	public Integer[] swap(Integer[] arr, int i, int j)
 	{
+    System.out.println("|:|:|--|" + arr + " - " + i  + " - " + j);
 		int foo = arr[i];
 		int bar = arr[j];
 		arr[i] = bar;
@@ -232,10 +233,27 @@ public class Sorting {
 		}
 		System.out.println(ret.substring(0, ret.length()-1));
 	}
+
 	public Integer[] Partition(Integer[] arr, int lo, int high)
   {
-    int pivot = 
-    swap(arr, 
+    Random gen = new Random();
+    int pivot = gen.nextInt(high-lo-1);
+    int leftWall = lo;
+    System.out.println("Pivot:" + pivot);
+    for(int i = lo; i < high; i++)
+    {
+      if(arr[i] < pivot)
+      {
+        System.out.println("Index:" + i + " -- " + "LeftWall: " + leftWall ); 
+        leftWall++;
+        swap(arr, i, leftWall);
+      }
+    }
+    return arr;
+  }
+
+
+
 
 
 	public static void main(String[] args) {
@@ -247,7 +265,8 @@ public class Sorting {
 		
 		Integer[] B = {4,6,13,15};
 		
-		Integer[] me = a.mergeSort(A, 0, 7);
+    Integer[] make = a.Partition(A, 0, arr.length);
+	//	Integer[] me = a.mergeSort(A, 0, 7);
 		//Integer[] me2 = a.merge(BP, 0, 1, 3);
 		//Integer[] me3 = a.merge(BP, 4, 5, 7);
 		
@@ -255,7 +274,7 @@ public class Sorting {
 		//Integer[] insertSort = a.insertionSort(arr);
 		//Integer[] foo = a.removeIndexFromArray(arr, 1000);	
 		
-		a.printArrs(me);
+		a.printArrs(make);
 		//a.printArrs(me2);
 		//a.printArrs(me3);
 		//a.printArrs(foo);
