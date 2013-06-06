@@ -262,10 +262,11 @@ public class Sorting {
     {
         
 	      Random gen = new Random();
-        int pivotIndex = lo + (high - lo)/2;
+        int pivotIndex = low + (high - low)/2;
         swap(arr,low,pivotIndex);
         int leftWall = low;
         int pivot = arr[low];
+        System.out.println(pivot);
         for(int i = low+1; i < high; i++)
         {
             if(arr[i] < pivot)
@@ -292,29 +293,21 @@ public class Sorting {
 
   public static void testParition()
   {
-      eq(0,(new Sorting()).Partition(new Integer[] {5,7,4,12,19,6,13,15},0,8),new Integer[] {5,7,12,19,4,6,13,15});
+      Integer[] arr = new Integer[] {5,7,4,12,19,6,13,15};
+      new Sorting().Partition(arr,0,8);
+      eq(0,arr,new Integer[] {5,7,19,12,4,6,13,15});
   }
 
-
-	public static void main(String[] args) {
+  public static void main(String[] args) {
 		// TODO Auto-generated method stub
-        //
-        Random m = new Random();
-    
-		Sorting a = new Sorting();
-		Integer[] arr = {1000,2,1,2,3,1,1000,5,5,6,7,1337,9,10};
-		Integer[] A = {5,7,12,19,4,6,13,15};
-		Integer[] A1 = {5,7,12,19,4,6,13,15};
-		Integer[] BP = {5,19,7,12,4,13,6,15};
-		
-		Integer[] B = {15,2,100,34,24,2453,53,532,521,25555,25};
-		int pivotIndex = m.nextInt(A1.length);
 
-        
+		Sorting a = new Sorting();
+		Integer[] A1 = {5,7,19,12,4,6,13,15};
+
     a.printArrs(A1);
-    int ploc = a.Partition(A1,0,A1.length);
+    int ploc = a.Partition(A1,0,A1.length-1);
     a.printArrs(A1);
-	}
+  }
 
     private static void eq( int n, int a, int b ) {
         if ( a==b )
@@ -347,6 +340,20 @@ public class Sorting {
             System.err.println("Case "+n+" failed: expected \""+b+"\", received \""+a+"\".");
     }
     private static void eq( int n, int[] a, int[] b ) {
+        if ( a.length != b.length ) {
+            System.err.println("Case "+n+" failed: returned "+a.length+" elements; expected "+b.length+" elements.");
+            return;
+        }
+        for ( int i= 0; i < a.length; i++)
+            if ( a[i] != b[i] ) {
+                System.err.println("Case "+n+" failed. Expected and returned array differ in position "+i);
+                print( b );
+                print( a );
+                return;
+            }
+        System.err.println("Case "+n+" passed.");
+    }
+    private static void eq( int n, Integer[] a, Integer[] b ) {
         if ( a.length != b.length ) {
             System.err.println("Case "+n+" failed: returned "+a.length+" elements; expected "+b.length+" elements.");
             return;
@@ -398,6 +405,16 @@ public class Sorting {
         System.err.print("\""+s+"\" ");
     }
     private static void print( int[] rs ) {
+        if ( rs == null) return;
+        System.err.print('{');
+        for ( int i= 0; i < rs.length; i++ ) {
+            System.err.print(rs[i]);
+            if ( i != rs.length-1 )
+                System.err.print(", ");
+        }
+        System.err.println('}');
+    }
+    private static void print( Integer[] rs ) {
         if ( rs == null) return;
         System.err.print('{');
         for ( int i= 0; i < rs.length; i++ ) {
