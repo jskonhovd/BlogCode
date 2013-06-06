@@ -183,7 +183,7 @@ public class Sorting {
 	
 	public Integer[] swap(Integer[] arr, int i, int j)
 	{
-    System.out.println("|:|:|--|" + arr + " - " + i  + " - " + j);
+   // System.out.println("|:|:|--|" + arr + " - " + i  + " - " + j);
 		int foo = arr[i];
 		int bar = arr[j];
 		arr[i] = bar;
@@ -234,23 +234,58 @@ public class Sorting {
 		System.out.println(ret.substring(0, ret.length()-1));
 	}
 
-	public Integer[] Partition(Integer[] arr, int lo, int high)
-  {
-    Random gen = new Random();
-    int pivot = arr[gen.nextInt(high-lo-1)];
-    int leftWall = lo;
-    System.out.println("Pivot:" + pivot + " -hi:" + high + " -Lo:"  + lo );
-    for(int i = lo; i < high-1; i++)
+    public static String getArrsString(Integer[] arr)
     {
-      if(arr[i] < pivot)
-      {
-        System.out.println("Index:" + i + " -- " + "LeftWall: " + leftWall + " Hi:" + high + " Lo:" + lo ); 
-        leftWall++;
-        swap(arr, i, leftWall);
-      }
+        String ret = "";
+        for(int i = 0; i < arr.length; i++)
+        {
+
+            ret += arr[i].toString() + ".";
+        }
+        return ret.substring(0, ret.length() -1);
     }
-    return arr;
-  }
+
+    public Integer Partition(Integer[] arr, int lo, int high, int pivotIndex)
+    {
+        int pivot = arr[pivotIndex];
+        //System.out.println(getArrsString(arr));
+        arr = swap(arr, lo, pivotIndex);
+        int leftWall = lo;
+       // System.out.println(getArrsString(arr));
+       // System.out.println("Pivot:" + pivot + " -hi:" + high + " -Lo:"  + lo );
+        for(int i = lo+1; i < high; i++)
+        {
+            if(arr[i] < pivot)
+            {
+          //      System.out.println("Index:" + i + " -- " + "LeftWall: " + leftWall); 
+                leftWall = leftWall + 1;
+                arr = swap(arr, i, leftWall);
+            }
+          //  System.out.println(getArrsString(arr));
+        }
+        arr = swap(arr,lo, leftWall);
+        return leftWall;
+    }
+    public void QuickSort(Integer[] arr, int lo, int high)
+    {
+
+        if(lo<high)
+        {
+            Random gen = new Random();
+            int pivotIndex = gen.nextInt(high);
+            int ploc = 0;
+            
+            
+            ploc = Partition(arr,lo,high,pivotIndex);
+            System.out.println("ploc:" +ploc);
+            System.out.println("1:" +  getArrsString(arr)+ " lo:" + lo + " high:" + high + " ploc - 1:" + (ploc-1));
+            QuickSort(arr,lo, ploc-1);
+            
+            System.out.println("2:" + getArrsString(arr)+ " lo:" + lo + " high:" + high + " ploc + 1:" + (ploc +1) );
+            QuickSort(arr,ploc+1,high);
+            
+        }//return arr;
+    }
 
 
 
@@ -258,14 +293,19 @@ public class Sorting {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+        //
+        Random m = new Random();
+    
 		Sorting a = new Sorting();
 		Integer[] arr = {1000,2,1,2,3,1,1000,5,5,6,7,1337,9,10};
 		Integer[] A = {5,7,12,19,4,6,13,15};
 		Integer[] BP = {5,19,7,12,4,13,6,15};
 		
 		Integer[] B = {4,6,13,15};
-		
-    Integer[] make = a.Partition(A, 0, A.length - 1);
+		int pivotIndex = m.nextInt(arr.length);
+        Integer make = a.Partition(arr,0,arr.length-1,pivotIndex);
+        a.printArrs(arr);
+        a.QuickSort(A,0,A.length-1);
 	//	Integer[] me = a.mergeSort(A, 0, 7);
 		//Integer[] me2 = a.merge(BP, 0, 1, 3);
 		//Integer[] me3 = a.merge(BP, 4, 5, 7);
@@ -273,8 +313,8 @@ public class Sorting {
 		//Integer[] selSort = a.selectionSort(arr);
 		//Integer[] insertSort = a.insertionSort(arr);
 		//Integer[] foo = a.removeIndexFromArray(arr, 1000);	
-		
-		a.printArrs(make);
+		System.out.println(make);
+		a.printArrs(A);
 		//a.printArrs(me2);
 		//a.printArrs(me3);
 		//a.printArrs(foo);
