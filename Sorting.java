@@ -181,7 +181,7 @@ public class Sorting {
 		
 	}
 	
-	public Integer[] swap(Integer[] arr, int i, int j)
+	public void swap(Integer[] arr, int i, int j)
 	{
    // System.out.println("|:|:|--|" + arr + " - " + i  + " - " + j);
 		int foo = arr[i];
@@ -189,7 +189,7 @@ public class Sorting {
 		arr[i] = bar;
 		arr[j] = foo;
 		
-		return arr;
+		//return arr;
 	}
 	
 	public Integer[] insertionSort(Integer[] arr)
@@ -200,7 +200,7 @@ public class Sorting {
 			int j = i;
 			while((j>0) && (arr[j] < arr[j-1]))
 			{
-				arr = swap(arr, j, j-1);
+				swap(arr, j, j-1);
 				j = j - 1;
 			}
 		}
@@ -249,7 +249,7 @@ public class Sorting {
     {
         int pivot = arr[pivotIndex];
         //System.out.println(getArrsString(arr));
-        arr = swap(arr, lo, pivotIndex);
+        swap(arr, lo, pivotIndex);
         int leftWall = lo;
        // System.out.println(getArrsString(arr));
        // System.out.println("Pivot:" + pivot + " -hi:" + high + " -Lo:"  + lo );
@@ -259,11 +259,11 @@ public class Sorting {
             {
           //      System.out.println("Index:" + i + " -- " + "LeftWall: " + leftWall); 
                 leftWall = leftWall + 1;
-                arr = swap(arr, i, leftWall);
+                swap(arr, i, leftWall);
             }
           //  System.out.println(getArrsString(arr));
         }
-        arr = swap(arr,lo, leftWall);
+        swap(arr,lo, leftWall);
         return leftWall;
     }
     public void QuickSort(Integer[] arr, int lo, int high)
@@ -299,13 +299,23 @@ public class Sorting {
 		Sorting a = new Sorting();
 		Integer[] arr = {1000,2,1,2,3,1,1000,5,5,6,7,1337,9,10};
 		Integer[] A = {5,7,12,19,4,6,13,15};
+		Integer[] A1 = {5,7,12,19,4,6,13,15};
 		Integer[] BP = {5,19,7,12,4,13,6,15};
 		
 		Integer[] B = {4,6,13,15};
-		int pivotIndex = m.nextInt(arr.length);
-        Integer make = a.Partition(arr,0,arr.length-1,pivotIndex);
-        a.printArrs(arr);
-        a.QuickSort(A,0,A.length-1);
+		int pivotIndex = m.nextInt(A1.length);
+    
+        a.printArrs(A);
+        a.swap(A,0,1);
+        a.printArrs(A);
+        
+        a.printArrs(A1);
+        System.out.println(pivotIndex);
+        System.out.println(A1[pivotIndex]);
+        int ploc = a.Partition(A1,0,A1.length,pivotIndex);
+        a.printArrs(A1);
+        System.out.println(ploc);
+        //a.QuickSort(A,0,A.length-1);
 	//	Integer[] me = a.mergeSort(A, 0, 7);
 		//Integer[] me2 = a.merge(BP, 0, 1, 3);
 		//Integer[] me3 = a.merge(BP, 4, 5, 7);
@@ -313,8 +323,8 @@ public class Sorting {
 		//Integer[] selSort = a.selectionSort(arr);
 		//Integer[] insertSort = a.insertionSort(arr);
 		//Integer[] foo = a.removeIndexFromArray(arr, 1000);	
-		System.out.println(make);
-		a.printArrs(A);
+		//System.out.println(make);
+		//a.printArrs(A);
 		//a.printArrs(me2);
 		//a.printArrs(me3);
 		//a.printArrs(foo);
