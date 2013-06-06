@@ -233,7 +233,20 @@ public class Sorting {
 		}
 		System.out.println(ret.substring(0, ret.length()-1));
 	}
+ public static String getArrStringBetween(Integer[] arr, int lo, int high)
+ {
 
+		String ret = "";
+	        if(lo < high)
+		{
+        	for(int i = lo; i < high; i++)
+        	{
+
+	            ret += arr[i].toString() + ".";
+        	}
+		}
+        	return ret.substring(0, ret.length());
+ }
     public static String getArrsString(Integer[] arr)
     {
         String ret = "";
@@ -245,50 +258,42 @@ public class Sorting {
         return ret.substring(0, ret.length() -1);
     }
 
-    public Integer Partition(Integer[] arr, int lo, int high, int pivotIndex)
+    public Integer Partition(Integer[] arr, int low, int high)
     {
-        int pivot = arr[pivotIndex];
-        //System.out.println(getArrsString(arr));
-        swap(arr, lo, pivotIndex);
-        int leftWall = lo;
-       // System.out.println(getArrsString(arr));
-       // System.out.println("Pivot:" + pivot + " -hi:" + high + " -Lo:"  + lo );
-        for(int i = lo+1; i < high; i++)
+        
+	      Random gen = new Random();
+        int pivotIndex = lo + (high - lo)/2;
+        swap(arr,low,pivotIndex);
+        int leftWall = low;
+        int pivot = arr[low];
+        for(int i = low+1; i < high; i++)
         {
             if(arr[i] < pivot)
             {
-          //      System.out.println("Index:" + i + " -- " + "LeftWall: " + leftWall); 
                 leftWall = leftWall + 1;
                 swap(arr, i, leftWall);
             }
-          //  System.out.println(getArrsString(arr));
         }
-        swap(arr,lo, leftWall);
+        swap(arr,low, leftWall);
+       // printArrs(arr);
+       // System.out.println(getArrStringBetween(arr,low,high));
+       // System.out.println("leftWall:" + leftWall + " Low:" + low + " Hi:" + high);
         return leftWall;
     }
-    public void QuickSort(Integer[] arr, int lo, int high)
+    public void QuickSort(Integer[] arr, int low, int high)
     {
-
-        if(lo<high)
-        {
-            Random gen = new Random();
-            int pivotIndex = gen.nextInt(high);
-            int ploc = 0;
-            
-            
-            ploc = Partition(arr,lo,high,pivotIndex);
-            System.out.println("ploc:" +ploc);
-            System.out.println("1:" +  getArrsString(arr)+ " lo:" + lo + " high:" + high + " ploc - 1:" + (ploc-1));
-            QuickSort(arr,lo, ploc-1);
-            
-            System.out.println("2:" + getArrsString(arr)+ " lo:" + lo + " high:" + high + " ploc + 1:" + (ploc +1) );
-            QuickSort(arr,ploc+1,high);
-            
-        }//return arr;
+            if(low < high)
+            {
+              int ploc = Partition(arr,low,high);
+              QuickSort(arr,low, ploc-1);
+              QuickSort(arr,ploc+1,high); 
+            }
     }
 
-
-
+  public static void testParition()
+  {
+      eq(0,(new Sorting()).Partition(new Integer[] {5,7,4,12,19,6,13,15},0,8),new Integer[] {5,7,12,19,4,6,13,15});
+  }
 
 
 	public static void main(String[] args) {
@@ -302,34 +307,129 @@ public class Sorting {
 		Integer[] A1 = {5,7,12,19,4,6,13,15};
 		Integer[] BP = {5,19,7,12,4,13,6,15};
 		
-		Integer[] B = {4,6,13,15};
+		Integer[] B = {15,2,100,34,24,2453,53,532,521,25555,25};
 		int pivotIndex = m.nextInt(A1.length);
-    
-        a.printArrs(A);
-        a.swap(A,0,1);
-        a.printArrs(A);
+
         
-        a.printArrs(A1);
-        System.out.println(pivotIndex);
-        System.out.println(A1[pivotIndex]);
-        int ploc = a.Partition(A1,0,A1.length,pivotIndex);
-        a.printArrs(A1);
-        System.out.println(ploc);
-        //a.QuickSort(A,0,A.length-1);
-	//	Integer[] me = a.mergeSort(A, 0, 7);
-		//Integer[] me2 = a.merge(BP, 0, 1, 3);
-		//Integer[] me3 = a.merge(BP, 4, 5, 7);
-		
-		//Integer[] selSort = a.selectionSort(arr);
-		//Integer[] insertSort = a.insertionSort(arr);
-		//Integer[] foo = a.removeIndexFromArray(arr, 1000);	
-		//System.out.println(make);
-		//a.printArrs(A);
-		//a.printArrs(me2);
-		//a.printArrs(me3);
-		//a.printArrs(foo);
-		//a.printArrs(selSort);
-		//a.printArrs(insertSort);
+    a.printArrs(A1);
+    int ploc = a.Partition(A1,0,A1.length);
+    a.printArrs(A1);
 	}
+
+    private static void eq( int n, int a, int b ) {
+        if ( a==b )
+            System.err.println("Case "+n+" passed.");
+        else
+            System.err.println("Case "+n+" failed: expected "+b+", received "+a+".");
+    }
+    private static void eq( int n, char a, char b ) {
+        if ( a==b )
+            System.err.println("Case "+n+" passed.");
+        else
+            System.err.println("Case "+n+" failed: expected '"+b+"', received '"+a+"'.");
+    }
+    private static void eq( int n, long a, long b ) {
+        if ( a==b )
+            System.err.println("Case "+n+" passed.");
+        else
+            System.err.println("Case "+n+" failed: expected \""+b+"L, received "+a+"L.");
+    }
+    private static void eq( int n, boolean a, boolean b ) {
+        if ( a==b )
+            System.err.println("Case "+n+" passed.");
+        else
+            System.err.println("Case "+n+" failed: expected "+b+", received "+a+".");
+    }
+    private static void eq( int n, String a, String b ) {
+        if ( a != null && a.equals(b) )
+            System.err.println("Case "+n+" passed.");
+        else
+            System.err.println("Case "+n+" failed: expected \""+b+"\", received \""+a+"\".");
+    }
+    private static void eq( int n, int[] a, int[] b ) {
+        if ( a.length != b.length ) {
+            System.err.println("Case "+n+" failed: returned "+a.length+" elements; expected "+b.length+" elements.");
+            return;
+        }
+        for ( int i= 0; i < a.length; i++)
+            if ( a[i] != b[i] ) {
+                System.err.println("Case "+n+" failed. Expected and returned array differ in position "+i);
+                print( b );
+                print( a );
+                return;
+            }
+        System.err.println("Case "+n+" passed.");
+    }
+    private static void eq( int n, long[] a, long[] b ) {
+        if ( a.length != b.length ) {
+            System.err.println("Case "+n+" failed: returned "+a.length+" elements; expected "+b.length+" elements.");
+            return;
+        }
+        for ( int i= 0; i < a.length; i++ )
+            if ( a[i] != b[i] ) {
+                System.err.println("Case "+n+" failed. Expected and returned array differ in position "+i);
+                print( b );
+                print( a );
+                return;
+            }
+        System.err.println("Case "+n+" passed.");
+    }
+    private static void eq( int n, String[] a, String[] b ) {
+        if ( a.length != b.length) {
+            System.err.println("Case "+n+" failed: returned "+a.length+" elements; expected "+b.length+" elements.");
+            return;
+        }
+        for ( int i= 0; i < a.length; i++ )
+            if( !a[i].equals( b[i])) {
+                System.err.println("Case "+n+" failed. Expected and returned array differ in position "+i);
+                print( b );
+                print( a );
+                return;
+            }
+        System.err.println("Case "+n+" passed.");
+    }
+    private static void print( int a ) {
+        System.err.print(a+" ");
+    }
+    private static void print( long a ) {
+        System.err.print(a+"L ");
+    }
+    private static void print( String s ) {
+        System.err.print("\""+s+"\" ");
+    }
+    private static void print( int[] rs ) {
+        if ( rs == null) return;
+        System.err.print('{');
+        for ( int i= 0; i < rs.length; i++ ) {
+            System.err.print(rs[i]);
+            if ( i != rs.length-1 )
+                System.err.print(", ");
+        }
+        System.err.println('}');
+    }
+    private static void print( long[] rs) {
+        if ( rs == null ) return;
+        System.err.print('{');
+        for ( int i= 0; i < rs.length; i++ ) {
+            System.err.print(rs[i]);
+            if ( i != rs.length-1 )
+                System.err.print(", ");
+        }
+        System.err.println('}');
+    }
+    private static void print( String[] rs ) {
+        if ( rs == null ) return;
+        System.err.print('{');
+        for ( int i= 0; i < rs.length; i++ ) {
+            System.err.print( "\""+rs[i]+"\"" );
+            if( i != rs.length-1)
+                System.err.print(", ");
+        }
+        System.err.println('}');
+    }
+    private static void nl() {
+        System.err.println();
+    }
+  
 
 }
