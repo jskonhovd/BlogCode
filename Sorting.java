@@ -1,14 +1,9 @@
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 public class Sorting {
 
-	/**
-	 * @param args
-	 */
 	public Integer findMinIndex(Integer[] arr)
 	{
 		int ret = Integer.MAX_VALUE;
@@ -57,9 +52,7 @@ public class Sorting {
 
 		return ls.toArray(new Integer[arr.length -1]);
 	}
-	
-	
-	
+		
 	public Integer[] initArray(Integer[] arr)
 	{
 		for(int i = 0; i < arr.length; i++)
@@ -97,7 +90,6 @@ public class Sorting {
 		return merge(arr, lo, mid, high);
 		
 	}
-	
 	
 	public Integer[] merge(Integer[] arr, int lo, int mid, int high)
 	{
@@ -238,6 +230,7 @@ public class Sorting {
 		}
 		System.out.println(ret.substring(0, ret.length()-1));
 	}
+	
 	public static String getArrStringBetween(Integer[] arr, int lo, int high)
 	 {
 		String ret = "";
@@ -250,6 +243,7 @@ public class Sorting {
 		}
     	return ret.substring(0, ret.length());
 	 }
+	
 	public static String getArrsString(Integer[] arr)
     {
         String ret = "";
@@ -280,6 +274,7 @@ public class Sorting {
 
 	    return leftWall;
 	}
+	
 	public void QuickSort(int[] arr, int low, int high)
 	{
 	        if(low < high)
@@ -303,6 +298,21 @@ public class Sorting {
 	    System.out.println("QuickSort: ----------- END");
 	    
 	}
+	
+	public static void testMergeSort()
+	{
+		System.out.println("MergeSort: ----------- START");
+		TestFramework test = new TestFramework();
+	    Integer[] arr = new Integer[] {5,7,4,12,19,6,13,15};
+	    arr = new Sorting().mergeSort(arr, 0, arr.length -1);
+	    test.print(arr);
+	    Integer[] grr = new Integer[] {1,2,5,3,51,23,511,5555,33,6};
+	    grr = new Sorting().mergeSort(grr, 0, grr.length-1);
+	    test.print(grr);
+	    System.out.println("MergeSort: ----------- END");
+		
+	}
+	
 	public static void testParition()
 	{
 		System.out.println("Parition: ----------- START");
@@ -323,14 +333,38 @@ public class Sorting {
 		System.out.println("Parition: ----------- END");
   }
 
-  public static void main(String[] args) {
+	public static void testInsertionSort()
+	{
+		System.out.println("InsertionSort: ----------- START");
+		TestFramework test = new TestFramework();
+	    int[] arr = new int[] {5,7,4,12,19,6,13,15};
+	    arr = new Sorting().insertionSort(arr);
+	    test.print(arr);
+	    int[] grr = new int[] {1,2,5,3,51,23,511,5555,33,6};
+	    grr = new Sorting().insertionSort(grr);
+	    test.print(grr);
+	    System.out.println("InsertionSort: ----------- END");
+	}
+	
+	public static void testSelectionSort(){
+		System.out.println("SelectionSort: ----------- START");
+		TestFramework test = new TestFramework();
+	    Integer[] arr = new Integer[] {5,7,4,12,19,6,13,15};
+	    arr = new Sorting().selectionSort(arr);
+	    test.print(arr);
+	    Integer[] grr = new Integer[] {1,2,5,3,51,23,511,5555,33,6};
+	    grr = new Sorting().selectionSort(grr);
+	    test.print(grr);
+	    System.out.println("SelectionSort: ----------- END");
+	}
+	
+	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
 	testParition();
 	testQuickSort();
+	testMergeSort();
+	testInsertionSort();
+	testSelectionSort();
   }
-
-    
   
-
 }
