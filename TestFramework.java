@@ -139,7 +139,20 @@ public class TestFramework {
     public void nl() {
         System.err.println();
     }
-    
+    public void print(int[][] rs) {
+        if ( rs == null ) return;
+        
+        for ( int i= 0; i < rs.length; i++ )
+        {
+        	System.err.print('{');
+        	for(int j = 0; j< rs[0].length; j++){
+            System.err.print(rs[i][j]);
+            if( j != rs[0].length-1)
+                System.err.print(", ");
+        }
+        System.err.println('}');
+        }
+    }
     public boolean checkPartion(int ploc, int[] arr)
     {
     	int pivot = arr[ploc];
@@ -167,7 +180,7 @@ public class TestFramework {
     }
 	public void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }

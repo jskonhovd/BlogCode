@@ -1,10 +1,6 @@
 
 public class DynamicPrograming {
 
-	/**
-	 * @param args
-	 */
-	
 	public Integer fib(int n)
 	{
 		if(n == 0)
@@ -18,7 +14,6 @@ public class DynamicPrograming {
 		return fib(n-1) + fib(n-2);
 		
 	}
-	
 	
 	public Integer fib2(int n)
 	{
@@ -39,8 +34,9 @@ public class DynamicPrograming {
 		
 		return foo;
 	}
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	
+	public static void testFibonacci()
+	{
 		DynamicPrograming a = new DynamicPrograming();
 		System.out.println(a.fib(0));
 		System.out.println(a.fib2(0));
@@ -49,6 +45,13 @@ public class DynamicPrograming {
 		System.out.println(a.fib2(45));
 		System.out.println("YES");
 		System.out.println(Integer.MAX_VALUE);
+		
+	}
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
 
 	}
 
