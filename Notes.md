@@ -23,6 +23,9 @@ Too many.....
 3. Operating Systems: C
 4. Functional Language: Scheme, Haskell, oCAML
 
+- Note: The functional languages are just for fun. As, It is your next two classes both use python. So, yeah. 
+
+
 
 ### Math Review
 
