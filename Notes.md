@@ -36,6 +36,10 @@ Too many.....
 2. Networking Programming
 3. Machine Learning for Trading
 
+### Soft Skills
+
+1. Writing.
+
 ###Career Goals
 
 1. remote.
