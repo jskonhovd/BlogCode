@@ -18,10 +18,10 @@
 
 Too many.....
 
-Work: C# / VB.NET, Javascript
-Scientific Computing: Python, Julia
-Operating Systems: C
-Functional Language: Scheme, Haskell, oCAML
+1. Work: C# / VB.NET, Javascript
+2. Scientific Computing: Python, Julia
+3. Operating Systems: C
+4. Functional Language: Scheme, Haskell, oCAML
 
 
 ### Math Review
