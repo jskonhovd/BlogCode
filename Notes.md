@@ -5,17 +5,17 @@
 ###Languages
 
 1. C# / VB.NET
-2. Java
-3. Python
-4. Scheme
-5. OCAML
-6. Haskell
-7. Javascript
-8. Julia
-9. C
-10. C++
-11. Perl
+2. Python
+3. Scheme
+4. Haskell
+5. Javascript
+6. C
+7. Perl
 
+###Languages I will mess with, but I don't care if I am not a expert at them.
+1. Java
+2. Julia
+3. oCAML or SML or F#
 
 Too many.....
 
