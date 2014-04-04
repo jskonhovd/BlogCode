@@ -6,10 +6,12 @@
 
 1. C# / VB.NET
 2. Python
-3. Scheme
-4. Haskell
-5. Javascript
-6. C
+3. C
+4. Javascript
+5. Scheme
+6. Haskell
+
+
 7. Perl
 
 ###Languages I will mess with, but I don't care if I am not a expert at them.
