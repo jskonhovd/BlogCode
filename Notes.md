@@ -14,6 +14,7 @@
 8. Julia
 9. C
 10. C++
+11. Perl
 
 
 Too many.....
@@ -22,10 +23,14 @@ Too many.....
 2. Scientific Computing: Python, Julia
 3. Operating Systems: C
 4. Functional Language: Scheme, Haskell, oCAML
+5. Fun: Perl
 
 - Note: The functional languages are just for fun. As, It is your next two classes both use python. So, yeah. 
 
+### Things I need to study outside of school.
 
+1. Compliers
+2. Regular Expresions.
 
 ### Math Review
 
