@@ -10,8 +10,6 @@
 4. Javascript
 5. Scheme
 6. Haskell
-
-
 7. Perl
 
 ###Languages I will mess with, but I don't care if I am not a expert at them.
@@ -26,6 +24,7 @@
 3. Operating Systems: C
 4. Functional Language: Scheme, Haskell, oCAML
 5. Fun: Perl
+6. University: Java
 
 - Note: The functional languages are just for fun. As, It is your next two classes both use python. So, yeah. 
 
