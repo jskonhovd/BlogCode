@@ -11,6 +11,7 @@
 5. Scheme
 6. Haskell
 7. Perl
+8. F#
 
 ###Languages I will mess with, but I don't care if I am not a expert at them.
 1. Java
